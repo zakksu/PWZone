@@ -15,6 +15,7 @@ Filipe wants the agent to **take charge** of building, committing, pushing, and 
 - Run `scripts/status.ps1` and read `.cursor/dev-state.json` + `.cursor/github-status.json`
 - Run `scripts/detect-pw.ps1` when testing with PW running
 - Fix CI failures without asking permission for routine fixes
+- Run `scripts/test-all.ps1` (or WebMap `npm run test:all`) before pushing UI changes
 - Update RUN.md when user-facing steps change
 
 ## Filipe only runs

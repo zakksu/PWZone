@@ -34,7 +34,7 @@ jobs:
 
       - name: Install
         working-directory: src/WebMap
-        run: npm ci
+        run: npm install --no-audit
 
       - name: Resolve base path
         id: base

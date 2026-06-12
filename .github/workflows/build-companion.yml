@@ -26,7 +26,7 @@ jobs:
 
       - name: Build WebMap
         working-directory: src/WebMap
-        run: npm ci && npm run build
+        run: npm install --no-audit && npm run build
         env:
           VITE_BASE_PATH: /
           GITHUB_PAGES: 'true'

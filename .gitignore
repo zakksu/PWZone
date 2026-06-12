@@ -19,6 +19,7 @@ coverage/
 
 # Tools
 tools/node/
+.npm-cache/
 
 # Node
 node_modules/

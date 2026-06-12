@@ -45,8 +45,19 @@ if (Test-Path $nodeExe) {
     if ($LASTEXITCODE -ne 0) { $failed = $true }
 
     Write-Host ""
+    Write-Host "[npm run test]" -ForegroundColor Yellow
+    npm run test
+    if ($LASTEXITCODE -ne 0) { $failed = $true }
+
+    Write-Host ""
     Write-Host "[npm run build]" -ForegroundColor Yellow
     npm run build
+    if ($LASTEXITCODE -ne 0) { $failed = $true }
+
+    Write-Host ""
+    Write-Host "[npm run test:smoke]" -ForegroundColor Yellow
+    npx playwright install chromium 2>$null | Out-Null
+    npm run test:smoke
     if ($LASTEXITCODE -ne 0) { $failed = $true }
 } else {
     Write-Host "[SKIP] Node not in tools/node" -ForegroundColor Yellow
