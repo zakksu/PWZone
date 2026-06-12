@@ -29,6 +29,7 @@ public static class DependencyInjection
         services.AddSingleton<WebSocket.IWebSocketBroadcaster>(sp =>
             sp.GetRequiredService<WebSocket.WebSocketBroadcaster>());
         services.AddHostedService<CompanionHostedService>();
+        services.AddHostedService<Map.StaticMapServer>();
 
         services.AddSingleton<IGatheringDataService>(sp =>
             new GatheringDataService(

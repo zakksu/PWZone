@@ -26,6 +26,7 @@ if (Test-Path $nodeExe) {
 
     if (-not $failed) {
         Write-Host "[OK] WebMap dist: $webMap\dist" -ForegroundColor Green
+        $env:VITE_BASE_PATH = "/"
     }
 } else {
     Write-Host "[SKIP] Node not found in tools/node" -ForegroundColor Yellow
@@ -38,9 +39,15 @@ try { $dotnetSdks = @(dotnet --list-sdks 2>$null) } catch {}
 if ($dotnetSdks.Count -gt 0) {
     Write-Host ""
     Write-Host "[Companion] dotnet publish" -ForegroundColor Yellow
-    dotnet publish src/Companion/UI/PWCompanion.UI.csproj -c Release -o publish/companion
+    dotnet publish src/Companion/UI/PWCompanion.UI.csproj -c Release -r win-x64 --self-contained false -o publish/companion
     if ($LASTEXITCODE -ne 0) { $failed = $true }
     else {
+        xcopy /E /I /Y data publish\companion\data | Out-Null
+        $dist = Join-Path $root "src\WebMap\dist"
+        if (Test-Path (Join-Path $dist "index.html")) {
+            xcopy /E /I /Y $dist publish\companion\webmap | Out-Null
+            Write-Host "[OK] Embedded webmap copied to publish/companion/webmap" -ForegroundColor Green
+        }
         Write-Host "[OK] Companion: $root\publish\companion" -ForegroundColor Green
     }
 } else {

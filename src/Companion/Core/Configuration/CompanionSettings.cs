@@ -28,8 +28,11 @@ public sealed class LoggingSettings
 
 public sealed class MapSettings
 {
-    public string WebMapUrl { get; set; } = "http://localhost:5173";
+    public string WebMapUrl { get; set; } = "http://127.0.0.1:5173/";
     public bool AutoOpenBrowser { get; set; } = true;
+    public bool ServeEmbeddedMap { get; set; } = true;
+    public int StaticMapPort { get; set; } = 5173;
+    public string EmbeddedMapDirectory { get; set; } = "webmap";
 }
 
 public sealed class DebugSettings

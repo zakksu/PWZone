@@ -9,8 +9,9 @@ The butler handles code, GitHub, and builds. You only do this:
 1. **Install .NET 8 SDK** — https://dotnet.microsoft.com/download  
    (Skip if you download the `.zip` from GitHub Actions instead.)
 
-2. **Enable GitHub Pages** (if map link is 404):  
-   GitHub → **PWZone → Settings → Pages → Source → GitHub Actions**
+2. **Enable GitHub Pages** (optional — map works locally without this):  
+   GitHub → **PWZone → Settings → Pages → Source → GitHub Actions**  
+   Until then, the companion serves the map at **http://127.0.0.1:5173/**
 
 3. **Run companion as Administrator once** (helps memory read):  
    Right-click `launch-companion.bat` → **Run as administrator**
@@ -32,7 +33,7 @@ launch-companion.bat
 It sits in the **system tray** (bottom-right). The map opens in your browser automatically.
 
 ### Step 3 — Play
-- **Map:** https://zakksu.github.io/PWZone/
+- **Map:** opens automatically at http://127.0.0.1:5173/ (served by the companion)
 - **Debug (F12):** see if companion attached to `elementclient_64`
 - **Tray menu:** reload offsets, reattach, exit
 
