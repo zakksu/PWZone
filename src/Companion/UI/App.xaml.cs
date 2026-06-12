@@ -22,6 +22,7 @@ public partial class App : Application
     private IHost? _host;
     private TaskbarIcon? _trayIcon;
     private DebugWindow? _debugWindow;
+    private Window? _hotkeyWindow;
 
     protected override async void OnStartup(StartupEventArgs e)
     {
@@ -64,6 +65,7 @@ public partial class App : Application
     protected override async void OnExit(ExitEventArgs e)
     {
         _trayIcon?.Dispose();
+        _hotkeyWindow?.Close();
 
         if (_host != null)
         {
@@ -107,10 +109,23 @@ public partial class App : Application
         if (!settings.Debug.EnableDebugWindow)
             return;
 
+        // Application has no CommandBindings; use a hidden window as the input sink.
+        _hotkeyWindow = new Window
+        {
+            Title = "PWCompanionHotkey",
+            Width = 1,
+            Height = 1,
+            Opacity = 0,
+            ShowInTaskbar = false,
+            WindowStyle = WindowStyle.ToolWindow,
+            ResizeMode = ResizeMode.NoResize,
+        };
+
         var gesture = new KeyGesture(Key.F12);
         var command = new RoutedCommand();
         command.InputGestures.Add(gesture);
-        CommandBindings.Add(new CommandBinding(command, (_, _) => ToggleDebugWindow()));
+        _hotkeyWindow.CommandBindings.Add(new CommandBinding(command, (_, _) => ToggleDebugWindow()));
+        _hotkeyWindow.Show();
     }
 
     private void ToggleDebugWindow()
