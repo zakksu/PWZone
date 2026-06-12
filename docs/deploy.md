@@ -1,5 +1,22 @@
 # Deploy PW Companion
 
+## Important: private repo + GitHub Pages
+
+Your repo is **private**. On the **free GitHub plan**, GitHub Pages only deploys from **public** repositories.
+
+**Fix (recommended for personal tool):**
+1. GitHub → **PWZone → Settings → General**
+2. Scroll to **Danger Zone → Change repository visibility → Public**
+
+Or keep private with **GitHub Pro** (paid).
+
+After making public (or upgrading), enable Pages:
+**Settings → Pages → Build and deployment → Source: GitHub Actions**
+
+Then re-run **Actions → Deploy Web Map → Re-run all jobs**.
+
+---
+
 ## One-time GitHub setup (5 minutes)
 
 1. Push this repo to GitHub (create repo `PWZone` or any name).
@@ -15,7 +32,7 @@ After the first successful **Deploy Web Map** run:
 
 | Setup | URL |
 |-------|-----|
-| Default (project pages) | `https://YOUR_GITHUB_USER.github.io/PWZone/` |
+| Default (project pages) | `https://zakksu.github.io/PWZone/` |
 | Custom domain | Add `src/WebMap/public/CNAME` with your domain, then `https://yourdomain.com/` |
 
 Replace `PWZone` with your actual repo name if different.
@@ -33,7 +50,7 @@ Replace `PWZone` with your actual repo name if different.
 ## Text to share (copy-paste)
 
 ```
-PW Companion live map: https://YOUR_GITHUB_USER.github.io/PWZone/
+PW Companion live map: https://zakksu.github.io/PWZone/
 Offline demo auto-starts. For live player tracking, run PW Companion desktop on your PC while playing.
 ```
 

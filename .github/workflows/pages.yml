@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       base_path:
-        description: 'Vite base path (use / for custom domain root, or /RepoName/ for project pages)'
+        description: 'Vite base path (/ for custom domain, /RepoName/ for project pages)'
         required: false
         default: ''
 
@@ -22,20 +22,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src/WebMap
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
           cache-dependency-path: src/WebMap/package-lock.json
 
       - name: Install
+        working-directory: src/WebMap
         run: npm ci
 
       - name: Resolve base path
@@ -43,19 +41,24 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.base_path }}" ]; then
             echo "path=${{ github.event.inputs.base_path }}" >> $GITHUB_OUTPUT
-          elif [ -f public/CNAME ]; then
+          elif [ -f src/WebMap/public/CNAME ]; then
             echo "path=/" >> $GITHUB_OUTPUT
           else
             echo "path=/${{ github.event.repository.name }}/" >> $GITHUB_OUTPUT
           fi
 
       - name: Build
+        working-directory: src/WebMap
         run: npm run build
         env:
           GITHUB_PAGES: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
           VITE_BASE_PATH: ${{ steps.base.outputs.path }}
           VITE_GITHUB_PAGES: 'true'
+
+      - name: Add 404 for GitHub Pages SPA
+        working-directory: src/WebMap
+        run: cp dist/index.html dist/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
