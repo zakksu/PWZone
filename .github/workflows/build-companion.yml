@@ -1,0 +1,41 @@
+name: Build Desktop Companion
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore PWCompanion.sln
+
+      - name: Test
+        run: dotnet test PWCompanion.sln -c Release --verbosity minimal
+
+      - name: Publish
+        run: dotnet publish src/Companion/UI/PWCompanion.UI.csproj -c Release -r win-x64 --self-contained false -o publish/companion
+
+      - name: Copy data
+        run: |
+          xcopy /E /I /Y data publish\companion\data
+
+      - name: Zip artifact
+        run: Compress-Archive -Path publish/companion/* -DestinationPath publish/PWCompanion-win-x64.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PWCompanion-win-x64
+          path: publish/PWCompanion-win-x64.zip
+          retention-days: 90

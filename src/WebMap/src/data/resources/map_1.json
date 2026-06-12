@@ -1,0 +1,63 @@
+{
+  "mapId": 1,
+  "mapName": "Archosaur Outskirts (Sample)",
+  "nodes": [
+    {
+      "id": "herb_001",
+      "name": "Ghost Flower",
+      "type": "herb",
+      "level": 1,
+      "x": 512,
+      "z": 768,
+      "respawnSeconds": 120,
+      "notes": "Near the southern grove. Popular spot. Obviously."
+    },
+    {
+      "id": "herb_002",
+      "name": "Verdant Root",
+      "type": "herb",
+      "level": 5,
+      "x": 320,
+      "z": 640,
+      "respawnSeconds": 180
+    },
+    {
+      "id": "ore_001",
+      "name": "Iron Ore",
+      "type": "ore",
+      "level": 3,
+      "x": 768,
+      "z": 256,
+      "respawnSeconds": 300,
+      "notes": "Rocky outcrop. Bring a pick. Revolutionary advice."
+    },
+    {
+      "id": "ore_002",
+      "name": "Copper Ore",
+      "type": "ore",
+      "level": 1,
+      "x": 680,
+      "z": 320,
+      "respawnSeconds": 240
+    },
+    {
+      "id": "wood_001",
+      "name": "Ancient Timber",
+      "type": "wood",
+      "level": 8,
+      "x": 200,
+      "z": 400,
+      "respawnSeconds": 360
+    },
+    {
+      "id": "plant_001",
+      "name": "Moonpetal",
+      "type": "plant",
+      "level": 12,
+      "x": 600,
+      "z": 500,
+      "respawnSeconds": 420,
+      "notes": "Alchemy staple. Respawn is an estimate — PW being PW."
+    }
+  ]
+}

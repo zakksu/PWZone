@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#2a2a4a" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="terrain" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e3a2f"/>
+      <stop offset="100%" stop-color="#0f0f1a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#terrain)"/>
+  <rect width="1024" height="1024" fill="url(#grid)" opacity="0.5"/>
+  <text x="512" y="480" text-anchor="middle" fill="#4ecca3" font-family="Segoe UI, sans-serif" font-size="28" opacity="0.9">
+    PW Companion  Sample Map
+  </text>
+  <text x="512" y="520" text-anchor="middle" fill="#888" font-family="Segoe UI, sans-serif" font-size="16">
+    Replace with sMAPtool export for map 1
+  </text>
+  <text x="512" y="560" text-anchor="middle" fill="#e94560" font-family="Segoe UI, sans-serif" font-size="14" opacity="0.8">
+    public/maps/sample_map_1.svg
+  </text>
+  <!-- Sample landmarks -->
+  <circle cx="256" cy="768" r="40" fill="#2a4a3a" stroke="#4ecca3" stroke-width="2" opacity="0.6"/>
+  <circle cx="768" cy="256" r="50" fill="#3a2a2a" stroke="#a0a0a0" stroke-width="2" opacity="0.6"/>
+  <path d="M 400 600 Q 512 400 640 600" fill="none" stroke="#1a4a6a" stroke-width="8" opacity="0.4"/>
+</svg>

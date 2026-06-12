@@ -1,0 +1,16 @@
+{
+  "webmap": {
+    "running": false,
+    "url": "http://127.0.0.1:5173/",
+    "port": 5173
+  },
+  "companion": {
+    "running": false,
+    "healthUrl": "http://127.0.0.1:17847/health",
+    "wsUrl": "ws://127.0.0.1:17847/"
+  },
+  "agentHints": [
+    "Run scripts/status.ps1 to refresh this file",
+    "Run scripts/dev.ps1 -Target webmap to start the map"
+  ]
+}

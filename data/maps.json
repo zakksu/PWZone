@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "maps": [
+    {
+      "mapId": 1,
+      "name": "Archosaur Outskirts (Sample)",
+      "originX": 0,
+      "originZ": 0,
+      "scale": 2,
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "tileUrl": "/maps/sample_map_1.svg"
+    }
+  ]
+}

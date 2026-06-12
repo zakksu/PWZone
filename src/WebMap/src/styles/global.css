@@ -1,0 +1,73 @@
+:root {
+  --bg-primary: #0f0f1a;
+  --bg-panel: #1a1a2e;
+  --accent: #e94560;
+  --accent-dim: #c73a52;
+  --text: #eaeaea;
+  --text-muted: #888;
+  --border: #2a2a4a;
+  --success: #4ecca3;
+  --warning: #ffc107;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  background: var(--bg-primary);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.leaflet-container {
+  background: var(--bg-primary);
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-panel);
+  color: var(--text);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-panel);
+}
+
+.player-marker {
+  background: transparent;
+  border: none;
+}
+
+.player-arrow {
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+  transform-origin: center center;
+}
+
+.resource-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.resource-marker.herb { background: #4ecca3; }
+.resource-marker.ore { background: #a0a0a0; }
+.resource-marker.wood { background: #8b6914; }
+.resource-marker.plant { background: #7cb342; }
+
+.nearest-line {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  opacity: 0.8;
+}

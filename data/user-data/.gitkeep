@@ -1,0 +1,2 @@
+# User data directory — gitignored at runtime
+# SQLite databases, notes, timers, and harvest history will live here in Phase 2+.

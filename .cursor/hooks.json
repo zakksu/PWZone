@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": ".cursor/hooks/session-start.ps1"
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": ".cursor/hooks/inject-dev-context.ps1",
+        "matcher": "Shell"
+      }
+    ]
+  }
+}

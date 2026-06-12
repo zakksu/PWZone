@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "description": "Template for new map resource files. Copy to resources/map_{id}.json",
+  "mapId": 0,
+  "mapName": "Replace With Map Name",
+  "nodes": [
+    {
+      "id": "example_001",
+      "name": "Example Resource",
+      "type": "herb",
+      "level": 1,
+      "x": 0,
+      "z": 0,
+      "respawnSeconds": 120,
+      "notes": "Replace coordinates with in-game /pos or memory-read values"
+    }
+  ]
+}

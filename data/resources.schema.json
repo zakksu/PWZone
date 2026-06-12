@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PW Companion Gathering Map Data",
+  "description": "Static gathering node spawns for a single PW map. Edit freely.",
+  "type": "object",
+  "required": ["mapId", "mapName", "nodes"],
+  "properties": {
+    "mapId": { "type": "integer", "description": "PW world/map ID" },
+    "mapName": { "type": "string" },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "level", "x", "z", "respawnSeconds"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique node ID within map" },
+          "name": { "type": "string" },
+          "type": { "enum": ["herb", "ore", "wood", "plant"], "description": "Resource category for filtering" },
+          "level": { "type": "integer", "minimum": 1 },
+          "x": { "type": "number", "description": "World X coordinate" },
+          "z": { "type": "number", "description": "World Z coordinate" },
+          "respawnSeconds": { "type": "integer", "minimum": 0, "description": "Estimated respawn time" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}
