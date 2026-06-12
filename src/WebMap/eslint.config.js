@@ -38,6 +38,18 @@ export default [
     },
   },
   {
+    files: ['vite.config.ts', '*.config.ts', '*.config.js'],
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        module: 'readonly',
+        require: 'readonly',
+      },
+    },
+  },
+  {
     ignores: ['dist/', 'node_modules/'],
   },
 ];

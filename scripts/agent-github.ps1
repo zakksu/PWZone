@@ -36,7 +36,7 @@ try {
 }
 
 try {
-    $r = Invoke-WebRequest -Uri $status.pagesUrl -UseBasicParsing -TimeoutSec 5
+    $r = Invoke-WebRequest -Uri $status.pagesUrl -UseBasicParsing -TimeoutSec 3 -MaximumRedirection 2
     $status.pagesLive = $r.StatusCode -eq 200
     $status.pagesHttpStatus = $r.StatusCode
 } catch {
