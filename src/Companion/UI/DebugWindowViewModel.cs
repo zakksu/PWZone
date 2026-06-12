@@ -87,8 +87,9 @@ public sealed class DebugWindowViewModel : INotifyPropertyChanged, IDisposable
         }
 
         var offsets = _playerStateReader.CurrentOffsets;
-        var moduleBase = _memoryReader.GetModuleBaseAddress(offsets.ModuleName);
-        MemoryText = $"Module base: 0x{moduleBase:X}\nPID: {_memoryReader.ProcessId}";
+        var moduleName = GameProcessAttach.ResolveModuleName(offsets.ModuleName, _memoryReader);
+        var moduleBase = _memoryReader.GetModuleBaseAddress(moduleName);
+        MemoryText = $"Module: {moduleName}\nModule base: 0x{moduleBase:X}\nPID: {_memoryReader.ProcessId}";
 
         if (_memoryReader.TryResolvePointerChain(
                 moduleBase,

@@ -7,8 +7,9 @@ namespace PWCompanion.Core.Models;
 public sealed class OffsetConfiguration
 {
     public string Version { get; set; } = "1.8.7-tcg-placeholder";
-    public string ProcessName { get; set; } = "elementclient";
-    public string ModuleName { get; set; } = "elementclient.exe";
+    public string ProcessName { get; set; } = "elementclient_64";
+    public string ModuleName { get; set; } = "elementclient_64.exe";
+    public string[] ProcessNameAliases { get; set; } = ["elementclient"];
     public int PollIntervalMs { get; set; } = 100;
 
     public PointerChain PlayerBase { get; set; } = new();

@@ -1,1 +1,0 @@
-{"root":["./src/app.tsx","./src/config.ts","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/errorboundary.tsx","./src/components/mapview.tsx","./src/components/playermarker.tsx","./src/components/resourcemarkers.tsx","./src/components/sidebar.tsx","./src/hooks/useofflinedemo.ts","./src/hooks/useplayerwebsocket.ts"],"version":"5.9.3"}

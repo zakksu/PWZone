@@ -6,6 +6,7 @@ using PWCompanion.Core.Demo;
 using PWCompanion.Core.Memory;
 using PWCompanion.Core.Models;
 using PWCompanion.Core.WebSocket;
+using PWCompanion.Logging;
 
 namespace PWCompanion.Core.Services;
 
@@ -85,17 +86,22 @@ public sealed class CompanionHostedService : BackgroundService
                         {
                             lastAttachAttempt = DateTime.UtcNow;
                             var offsets = _playerStateReader.CurrentOffsets;
-                            var attached = _memoryReader.TryAttach(offsets.ProcessName);
+                            var attached = GameProcessAttach.TryAttach(
+                                _memoryReader,
+                                offsets.ProcessName,
+                                offsets.ProcessNameAliases);
+
+                            var activeProcess = attached ? _memoryReader.ProcessName : offsets.ProcessName;
 
                             await _broadcaster.BroadcastStatusAsync(new ServerStatusMessage
                             {
                                 Attached = attached,
-                                ProcessName = offsets.ProcessName,
+                                ProcessName = activeProcess,
                                 ProcessId = _memoryReader.ProcessId,
                                 OffsetVersion = offsets.Version,
                                 Message = attached
-                                    ? $"Attached to {offsets.ProcessName}. Let's find some herbs."
-                                    : Logging.ButlerLog.ProcessNotFoundHint(offsets.ProcessName),
+                                    ? $"Attached to {activeProcess}. Let's find some herbs."
+                                    : ButlerLog.ProcessNotFoundHint(offsets.ProcessName),
                             }, stoppingToken);
                         }
                     }

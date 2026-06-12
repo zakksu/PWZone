@@ -60,3 +60,4 @@ credentials.json
 
 # Vite
 src/WebMap/dist/
+*.tsbuildinfo

@@ -1,32 +1,17 @@
 {
-  "Version": "1.8.7-tcg-placeholder",
-  "ProcessName": "elementclient",
-  "ModuleName": "elementclient.exe",
+  "Version": "1.8.7-tcg-elementclient_64",
+  "ProcessName": "elementclient_64",
+  "ProcessNameAliases": ["elementclient"],
+  "ModuleName": "elementclient_64.exe",
   "PollIntervalMs": 100,
   "PlayerBase": {
     "BaseOffset": 0,
     "Offsets": [],
     "Description": "REPLACE: pointer chain to player object. See docs/offsets-guide.md"
   },
-  "PositionX": {
-    "Offset": 0,
-    "Description": "Player X (east-west)"
-  },
-  "PositionY": {
-    "Offset": 4,
-    "Description": "Player Y (height)"
-  },
-  "PositionZ": {
-    "Offset": 8,
-    "Description": "Player Z (north-south)"
-  },
-  "MapId": {
-    "Offset": 16,
-    "Description": "Current map/world ID"
-  },
-  "Facing": {
-    "Offset": 20,
-    "Description": "Facing angle in radians",
-    "Optional": true
-  }
+  "PositionX": { "Offset": 0, "Description": "Player X (east-west)" },
+  "PositionY": { "Offset": 4, "Description": "Player Y (height)" },
+  "PositionZ": { "Offset": 8, "Description": "Player Z (north-south)" },
+  "MapId": { "Offset": 16, "Description": "Current map/world ID" },
+  "Facing": { "Offset": 20, "Description": "Facing angle in radians", "Optional": true }
 }

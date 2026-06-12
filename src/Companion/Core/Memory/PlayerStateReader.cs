@@ -57,7 +57,8 @@ public sealed class PlayerStateReader : IPlayerStateReader
         if (!_memoryReader.IsAttached)
             return PlayerState.Invalid;
 
-        var moduleBase = _memoryReader.GetModuleBaseAddress(_offsets.ModuleName);
+        var moduleName = GameProcessAttach.ResolveModuleName(_offsets.ModuleName, _memoryReader);
+        var moduleBase = _memoryReader.GetModuleBaseAddress(moduleName);
         if (moduleBase == nint.Zero)
         {
             _logger.LogWarning(ButlerLog.OffsetOutdatedHint("ModuleBase"));

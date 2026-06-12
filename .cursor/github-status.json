@@ -1,0 +1,54 @@
+﻿{
+    "pagesUrl":  "https://zakksu.github.io/PWZone/",
+    "pagesHint":  "Enable Settings -\u003e Pages -\u003e Source: GitHub Actions, then re-run Deploy Web Map workflow",
+    "workflows":  [
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27444153355",
+                          "name":  "Build Desktop Companion",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:29:39Z"
+                      },
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27444153350",
+                          "name":  "CI",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:29:39Z"
+                      },
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27444153324",
+                          "name":  "Deploy Web Map",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:29:39Z"
+                      },
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27443910023",
+                          "name":  "CI",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:24:11Z"
+                      },
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27443909991",
+                          "name":  "Build Desktop Companion",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:24:11Z"
+                      },
+                      {
+                          "conclusion":  "failure",
+                          "url":  "https://github.com/zakksu/PWZone/actions/runs/27443909978",
+                          "name":  "Deploy Web Map",
+                          "status":  "completed",
+                          "createdAt":  "2026-06-12T21:24:11Z"
+                      }
+                  ],
+    "pagesHttpStatus":  null,
+    "checkedAt":  "2026-06-12T23:20:29.7276100Z",
+    "pagesError":  "O servidor remoto retornou um erro: (404) Não Localizado.",
+    "pagesLive":  false,
+    "repo":  "zakksu/PWZone",
+    "repoUrl":  "https://github.com/zakksu/PWZone"
+}

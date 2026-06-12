@@ -1,0 +1,41 @@
+---
+description: PW Companion agent autonomy - commit, push, monitor, build without asking Filipe
+globs:
+alwaysApply: true
+---
+
+# PW Companion Agent Autonomy
+
+Filipe wants the agent to **take charge** of building, committing, pushing, and monitoring. Filipe only runs the game + `launch-companion.bat`.
+
+## Agent responsibilities (do autonomously)
+
+- Commit and push fixes to `main` on zakksu/PWZone when building/improving
+- Run `scripts/agent-github.ps1` to check CI/Pages status via public API
+- Run `scripts/status.ps1` and read `.cursor/dev-state.json` + `.cursor/github-status.json`
+- Run `scripts/detect-pw.ps1` when testing with PW running
+- Fix CI failures without asking permission for routine fixes
+- Update RUN.md when user-facing steps change
+
+## Filipe only runs
+
+1. Perfect World (logged in)
+2. `launch-companion.bat` (as admin if attach fails)
+3. Tells agent F12 debug output when asked
+
+## Key facts
+
+- TCG process name: **elementclient_64** (not elementclient)
+- Map URL: https://zakksu.github.io/PWZone/
+- WebSocket: ws://127.0.0.1:17847/
+- Offsets are placeholders until calibrated with Cheat Engine
+- Pages deploy fails until: Settings -> Pages -> Source -> GitHub Actions
+
+## Before telling Filipe to do something
+
+1. Check if agent can do it first (push, build, scripts)
+2. Only ask Filipe for: in-game actions, F12 output, admin launch, one-time GitHub Settings clicks
+
+## Push policy
+
+When user says "keep building" or similar: commit logical chunks, push to origin main, verify workflows via agent-github.ps1.
