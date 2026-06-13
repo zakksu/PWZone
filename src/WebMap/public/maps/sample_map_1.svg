@@ -1,26 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
   <defs>
     <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
-      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#2a2a4a" stroke-width="1"/>
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#3d5a80" stroke-width="1"/>
     </pattern>
-    <radialGradient id="terrain" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#1e3a2f"/>
-      <stop offset="100%" stop-color="#0f0f1a"/>
+    <radialGradient id="terrain" cx="45%" cy="55%" r="75%">
+      <stop offset="0%" stop-color="#2d6a4f"/>
+      <stop offset="55%" stop-color="#1b4332"/>
+      <stop offset="100%" stop-color="#081c15"/>
     </radialGradient>
   </defs>
+  <!-- Visible frame so the map area is obvious on dark UI -->
   <rect width="1024" height="1024" fill="url(#terrain)"/>
-  <rect width="1024" height="1024" fill="url(#grid)" opacity="0.5"/>
-  <text x="512" y="480" text-anchor="middle" fill="#4ecca3" font-family="Segoe UI, sans-serif" font-size="28" opacity="0.9">
-    PW Companion  Sample Map
+  <rect x="8" y="8" width="1008" height="1008" fill="none" stroke="#4ecca3" stroke-width="4" opacity="0.55"/>
+  <rect width="1024" height="1024" fill="url(#grid)" opacity="0.65"/>
+  <text x="512" y="460" text-anchor="middle" fill="#95d5b2" font-family="Segoe UI, sans-serif" font-size="32" font-weight="600">
+    PW Companion — Sample Map
   </text>
-  <text x="512" y="520" text-anchor="middle" fill="#888" font-family="Segoe UI, sans-serif" font-size="16">
-    Replace with sMAPtool export for map 1
+  <text x="512" y="510" text-anchor="middle" fill="#b7e4c7" font-family="Segoe UI, sans-serif" font-size="18">
+    Map 1 · Archosaur Outskirts (placeholder)
   </text>
-  <text x="512" y="560" text-anchor="middle" fill="#e94560" font-family="Segoe UI, sans-serif" font-size="14" opacity="0.8">
-    public/maps/sample_map_1.svg
+  <text x="512" y="550" text-anchor="middle" fill="#888" font-family="Segoe UI, sans-serif" font-size="14">
+    Replace with sMAPtool export for real terrain
   </text>
   <!-- Sample landmarks -->
-  <circle cx="256" cy="768" r="40" fill="#2a4a3a" stroke="#4ecca3" stroke-width="2" opacity="0.6"/>
-  <circle cx="768" cy="256" r="50" fill="#3a2a2a" stroke="#a0a0a0" stroke-width="2" opacity="0.6"/>
-  <path d="M 400 600 Q 512 400 640 600" fill="none" stroke="#1a4a6a" stroke-width="8" opacity="0.4"/>
+  <circle cx="256" cy="768" r="48" fill="#40916c" stroke="#95d5b2" stroke-width="3" opacity="0.75"/>
+  <circle cx="768" cy="256" r="56" fill="#52796f" stroke="#d8f3dc" stroke-width="3" opacity="0.75"/>
+  <path d="M 320 680 Q 512 420 720 680" fill="none" stroke="#48cae4" stroke-width="10" opacity="0.45"/>
+  <text x="48" y="80" fill="#4ecca3" font-family="Segoe UI, sans-serif" font-size="14" opacity="0.9">NW</text>
+  <text x="960" y="992" fill="#4ecca3" font-family="Segoe UI, sans-serif" font-size="14" text-anchor="end" opacity="0.9">SE</text>
 </svg>
