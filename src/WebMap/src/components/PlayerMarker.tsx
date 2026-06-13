@@ -1,7 +1,7 @@
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import type { PlayerUpdateMessage, MapMeta } from '../types';
-import { worldToMap } from '../types';
+import { hasValidPosition, worldToMap } from '../types';
 
 interface PlayerMarkerProps {
   player: PlayerUpdateMessage;
@@ -9,6 +9,8 @@ interface PlayerMarkerProps {
 }
 
 export function PlayerMarker({ player, mapMeta }: PlayerMarkerProps) {
+  if (!hasValidPosition(player)) return null;
+
   const [lat, lng] = worldToMap(player.x, player.z, mapMeta);
   const rotation = player.facing != null ? (player.facing * 180) / Math.PI : 0;
 

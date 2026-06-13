@@ -75,6 +75,20 @@ export function worldToMap(
   return [lat, lng];
 }
 
+/** True when player coords are safe to pass to Leaflet (finite, flagged valid). */
+export function hasValidPosition(player: PlayerUpdateMessage | null | undefined): boolean {
+  if (!player?.isValid) return false;
+  return (
+    Number.isFinite(player.x) &&
+    Number.isFinite(player.y) &&
+    Number.isFinite(player.z)
+  );
+}
+
+export function isSafeLatLng(lat: number, lng: number): boolean {
+  return Number.isFinite(lat) && Number.isFinite(lng);
+}
+
 export function distance2D(x1: number, z1: number, x2: number, z2: number): number {
   const dx = x2 - x1;
   const dz = z2 - z1;

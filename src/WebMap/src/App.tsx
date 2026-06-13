@@ -4,7 +4,7 @@ import { useOfflineDemo } from './hooks/useOfflineDemo';
 import Sidebar from './components/Sidebar';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import type { GatheringMapData, MapMeta, PlayerUpdateMessage, ResourceFilter } from './types';
-import { DEFAULT_FILTER } from './types';
+import { DEFAULT_FILTER, hasValidPosition } from './types';
 import { assetUrl } from './config';
 import mapsCatalog from './data/maps.json';
 import map1Resources from './data/resources/map_1.json';
@@ -41,8 +41,9 @@ function loadResources(mapId: number): GatheringMapData {
 export default function App() {
   const { player: livePlayer, status, connected, lastError } = usePlayerWebSocket();
   const [offlineDemo, setOfflineDemo] = useState(true);
-  const demoPlayer = useOfflineDemo(offlineDemo && !connected);
-  const player: PlayerUpdateMessage | null = livePlayer ?? demoPlayer;
+  const livePositionOk = hasValidPosition(livePlayer);
+  const demoPlayer = useOfflineDemo(offlineDemo && !livePositionOk);
+  const player: PlayerUpdateMessage | null = livePositionOk ? livePlayer : demoPlayer;
 
   const [filter, setFilter] = useState<ResourceFilter>(DEFAULT_FILTER);
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,7 +51,7 @@ export default function App() {
   const [nearestDistance, setNearestDistance] = useState(0);
   const [zoomTrigger, setZoomTrigger] = useState(0);
 
-  const activeMapId = player?.isValid ? player.mapId : 1;
+  const activeMapId = hasValidPosition(player) ? player!.mapId : 1;
   const mapMeta = useMemo(() => findMapMeta(activeMapId), [activeMapId]);
   const resources = useMemo(() => loadResources(activeMapId).nodes, [activeMapId]);
 
@@ -82,7 +83,7 @@ export default function App() {
         onZoomNearest={handleZoomNearest}
         offlineDemo={offlineDemo}
         onOfflineDemoChange={setOfflineDemo}
-        isDemoActive={!!demoPlayer && !connected}
+        isDemoActive={!!demoPlayer && !livePositionOk}
       />
       <main className="map-container">
         <ErrorBoundary label="Map">

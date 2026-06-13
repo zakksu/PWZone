@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { MapContainer, ImageOverlay, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import type { GatheringNode, MapMeta, PlayerUpdateMessage, ResourceFilter } from '../types';
-import { worldToMap } from '../types';
+import { hasValidPosition, isSafeLatLng, worldToMap } from '../types';
 import { PlayerMarker } from './PlayerMarker';
 import { ResourceMarkers } from './ResourceMarkers';
 
@@ -42,7 +42,7 @@ function ZoomToNearest({
   const lastZoom = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!player?.isValid || !nearestNode) return;
+    if (!hasValidPosition(player) || !nearestNode) return;
     const key = `${nearestNode.id}-${player.x.toFixed(0)}`;
     if (lastZoom.current === key) return;
     lastZoom.current = key;
@@ -74,7 +74,7 @@ export function MapView({
   }, [resources, filter, searchQuery]);
 
   const nearestNode = useMemo(() => {
-    if (!player?.isValid || filteredResources.length === 0)
+    if (!hasValidPosition(player) || filteredResources.length === 0)
       return null;
 
     let best: GatheringNode | null = null;
@@ -105,9 +105,10 @@ export function MapView({
   }, [nearestNode, player, onNearestChange]);
 
   const linePositions = useMemo(() => {
-    if (!player?.isValid || !nearestNode) return [];
-    const [pLat, pLng] = worldToMap(player.x, player.z, mapMeta);
+    if (!hasValidPosition(player) || !nearestNode) return [];
+    const [pLat, pLng] = worldToMap(player!.x, player!.z, mapMeta);
     const [nLat, nLng] = worldToMap(nearestNode.x, nearestNode.z, mapMeta);
+    if (!isSafeLatLng(pLat, pLng) || !isSafeLatLng(nLat, nLng)) return [];
     return [[pLat, pLng] as [number, number], [nLat, nLng] as [number, number]];
   }, [player, nearestNode, mapMeta]);
 
@@ -131,8 +132,8 @@ export function MapView({
         mapMeta={mapMeta}
         highlightId={nearestNodeId}
       />
-      {player?.isValid && (
-        <PlayerMarker player={player} mapMeta={mapMeta} />
+      {hasValidPosition(player) && (
+        <PlayerMarker player={player!} mapMeta={mapMeta} />
       )}
       {linePositions.length === 2 && (
         <Polyline

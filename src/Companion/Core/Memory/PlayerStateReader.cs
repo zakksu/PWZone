@@ -97,7 +97,7 @@ public sealed class PlayerStateReader : IPlayerStateReader
             Z = z,
             MapId = mapId,
             FacingRadians = facing,
-            IsValid = true,
+            IsValid = float.IsFinite(x) && float.IsFinite(y) && float.IsFinite(z),
             Timestamp = DateTimeOffset.UtcNow,
         };
     }
