@@ -50,6 +50,14 @@ export default [
     },
   },
   {
+    files: ['**/*.test.{ts,tsx}', 'src/test/**'],
+    languageOptions: {
+      globals: {
+        queueMicrotask: 'readonly',
+      },
+    },
+  },
+  {
     ignores: ['dist/', 'node_modules/', 'e2e/'],
   },
 ];

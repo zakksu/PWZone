@@ -14,10 +14,10 @@ class MockWebSocket {
   onmessage: ((event: { data: string }) => void) | null = null;
 
   constructor(_url: string) {
-    queueMicrotask(() => {
+    setTimeout(() => {
       this.readyState = MockWebSocket.CLOSED;
       this.onclose?.();
-    });
+    }, 0);
   }
 
   close() {
