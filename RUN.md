@@ -24,11 +24,13 @@ The butler handles code, GitHub, and builds. You only do this:
 Log in with your character. Leave the game running.
 
 ### Step 2 — Launch the companion
-Double-click:
+Double-click (NOT start-webmap.bat):
 
 ```
 launch-companion.bat
 ```
+
+This stops any broken dev server and serves the built map on port 5173.
 
 It sits in the **system tray** (bottom-right). The map opens in your browser automatically.
 

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState, lazy, Suspense } from 'react';
 import { usePlayerWebSocket } from './hooks/usePlayerWebSocket';
 import { useOfflineDemo } from './hooks/useOfflineDemo';
-import { Sidebar } from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import type { GatheringMapData, MapMeta, PlayerUpdateMessage, ResourceFilter } from './types';
 import { DEFAULT_FILTER } from './types';

@@ -258,3 +258,5 @@ export function Sidebar({
     </aside>
   );
 }
+
+export default Sidebar;

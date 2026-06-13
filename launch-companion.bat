@@ -2,8 +2,11 @@
 title PW Companion
 cd /d "%~dp0"
 
+REM Stop broken Vite dev server — companion serves the built map on :5173
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\prepare-launch.ps1"
+
 if exist "publish\companion\PWCompanion.exe" (
-    echo Starting published PW Companion...
+    echo Starting PW Companion...
     start "" "publish\companion\PWCompanion.exe"
     exit /b 0
 )
